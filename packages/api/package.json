@@ -1,0 +1,16 @@
+{
+  "name": "@pense/api",
+  "version": "1.0.1",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ant-design-vue": "^3.2.15",
+    "axios": "^1.1.3"
+  }
+}
