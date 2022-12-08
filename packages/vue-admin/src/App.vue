@@ -1,6 +1,6 @@
 <script setup>
     import {RouterLink, RouterView} from 'vue-router'
-    // import HelloWorld from './components/HelloWorld.vue'
+    import HelloWorld from './components/HelloWorld.vue'
     import { format,
         trimSpace,
         firstToUpperCase,
@@ -12,7 +12,7 @@
         SkyInput,
     }  from '@pense/components'
 
-    import { onMounted } from 'vue'
+    import { onMounted,ref } from 'vue'
 
     // 测试
     // getUser().then(res => {
@@ -49,6 +49,10 @@
     onMounted(()=>{
       console.log(123456)
     })
+
+    const clickEven = (val)=>{
+      console.log(val)
+    }
 </script>
 
 <template>
@@ -56,7 +60,11 @@
         <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125"/>
 
         <div class="wrapper">
-            <!--<HelloWorld msg="You did it!" />-->
+            <HelloWorld
+                ref="hello"
+                msg="组件props"
+                @clickChild="clickEven"
+            />
             <SkyButton></SkyButton>
             <div>------</div>
             <SkyInput></SkyInput>
@@ -70,7 +78,17 @@
     <RouterView/>
 </template>
 
-<style scoped>
+<style>
+body{
+  --test-var: 'green';
+}
+/*全局变量*/
+:root {
+  --fontSize: 19px;
+  --bg-color: #1e90ff;
+  --font-color: #1e90ff;
+  --url: url("https://picsum.photos/id/1/200/300");
+}
     header {
         line-height: 1.5;
         max-height: 100vh;

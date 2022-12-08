@@ -4,6 +4,16 @@
   </div>
 </template>
 
+<script setup>
+import {useRoute} from 'vue-router'
+
+const $route = useRoute()
+const {id, a} = $route.query
+
+console.log('id: ' + id)
+console.log('a: ' + a)
+</script>
+
 <style>
 @media (min-width: 1024px) {
   .about {
