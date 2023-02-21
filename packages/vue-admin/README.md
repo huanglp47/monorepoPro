@@ -29,6 +29,27 @@ const color = 'red'
   }
 </style>
 
+方法3：使用less
+vite.config.js引入全局变量或函数
+ css: {
+    preprocessorOptions: {
+        less: {
+            modifyVars: {
+                hack: `true; @import (reference) "${path.resolve("./src/assets/less/base.less")}";`,
+            },
+            javascriptEnabled: true,
+        },
+    },
+},
+页面使用：
+ .aa{
+  font-size: 18px;
+  color: @primary-color;
+  .bordered();
+  .border-radius(5px);
+}
+
+
 1.2 防止CSS样式全局污染
 1 <style scoped>
 //...
@@ -55,6 +76,13 @@ getters使用；
 
 actions使用；
 注意pinia内不能写出action
+
+```
+
+## 集成功能
+```js
+css换肤
+虚拟滚动
 
 ```
 

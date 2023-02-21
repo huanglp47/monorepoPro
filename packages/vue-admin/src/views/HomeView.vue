@@ -12,9 +12,11 @@ const color = 'red'
 <template>
   <main>
     <ChangeSkin />
+
     <div class="p1">当前鼠标X:{{x}}</div>
     <div class="p2">当前鼠标y:{{y}}</div>
     <div class="img"></div>
+
     <TheWelcome />
   </main>
 </template>

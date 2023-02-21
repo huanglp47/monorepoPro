@@ -1,6 +1,6 @@
 <script setup>
 import { useMainStore } from "../stores/main";
-import { defineEmits, onMounted, reactive, ref, watch} from 'vue'
+import { defineEmits, onMounted, reactive, ref, watch, watchEffect} from 'vue'
 import { useRouter } from 'vue-router'
 import MyModal from '../components/MyModal.vue'
 // 模态框显示与隐藏
@@ -38,14 +38,23 @@ const state = reactive({
   name: "zs",
   age: 19,
   count: 1,
+  user:{
+    count:10
+  }
 })
 const clickCount = ()=>{
   state.count++
+  state.age++
 }
 
-watch(() => state.count, (newValue, oldValue) => {
-  console.log('watch 已触发', newValue)
-}, { deep: true })
+// watch(() => state.count, (newValue, oldValue) => {
+//   console.log('watch 已触发', newValue)
+// }, { deep: true })
+
+
+watchEffect(()=>{
+  console.log('watchEffect 已触发', state.count + ' age: '+state.age )
+})
 
 const closeFn=()=>{
   showModal.value = false
@@ -64,6 +73,15 @@ const loginFn = ()=>{
 
 <template>
   <div class="greetings">
+    <div class="hr"></div>
+    <div>测试全局less引入</div>
+    <ul class="golalVar">
+      <li>45</li>
+      <li>
+        <span class="aa">56</span>
+      </li>
+      <li>78</li>
+    </ul>
 
     <div class="hr"></div>
     <div>pinia修改state: {{store.name}}</div>
@@ -100,16 +118,29 @@ const loginFn = ()=>{
     </Teleport>
 
     <div class="hr"></div>
-    <h3>
-      <a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a> +
-      <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>.
-    </h3>
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="less">
+ul{
+  list-style: none;
+  li{
+    border-bottom: 1px solid #ccc;
+    line-height: 60px;
+    color: @primary-color;
+    font-size: 14px;
+    .aa{
+      font-size: 18px;
+      color: #00bd7e;
+      .bordered();
+      .border-radius(5px);
+    }
+  }
+
+}
+
 .hr{
-  padding: 10px;
+  padding: 20px;
 }
 h1 {
   font-weight: 500;

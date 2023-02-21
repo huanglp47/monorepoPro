@@ -22,7 +22,7 @@
     console.log(time)
 
     const str = trimSpace('  76878,   bnbn  ')
-    console.log('%cstr的值：str', 'color:red;')
+    console.log('%cstr的值：'+str, 'color:red;')
 
     const str2 = firstToUpperCase('sdsdfdf')
     console.log(str2)
@@ -65,12 +65,16 @@
                 msg="组件props"
                 @clickChild="clickEven"
             />
+          <div style="margin-left: 10px;">
+            npm组件引入demo
             <SkyButton></SkyButton>
             <div>------</div>
             <SkyInput></SkyInput>
+          </div>
             <nav>
                 <RouterLink to="/">Home</RouterLink>
                 <RouterLink to="/about">About</RouterLink>
+                <RouterLink to="/vscroll">虚拟滚动demo</RouterLink>
             </nav>
         </div>
     </header>
