@@ -1,6 +1,5 @@
 import {defineStore} from "pinia";
 import {getHitsApi} from '@/api/index';
-import { debug } from "console";
 
 interface UserInfo {
     userId?: string | number;

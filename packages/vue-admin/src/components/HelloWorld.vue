@@ -66,9 +66,42 @@ const patchStore=()=>{
   })
 }
 
-const loginFn = ()=>{
+const loginFn = ()=> {
   store.registerUser('admin', '123456')
 }
+
+const loading = ref(false);
+// let listData = reactive([])
+// let listData = ref([])
+let listData = reactive({
+  list:[]
+})
+
+async function getData(){
+  try {
+    loading.value = true;
+    //注意，这样重新定义会导致失去响应式，页面不更新，不用reactive([])，改用ref([])
+    // listData = await store.getHitsApi()
+    // listData.value = await store.getHitsApi()
+    listData.list = await store.getHitsApi()
+    console.log(listData);
+  }catch (error) {
+    console.log(error);
+  } finally {
+    loading.value = false;
+  }
+}
+
+onMounted(() => {
+  getData();
+});
+
+const getPiniaData = ()=> {
+  let data = store.someHits
+  console.log('pinia getter的缓存：')
+  console.log(data)
+}
+
 </script>
 
 <template>
@@ -118,6 +151,14 @@ const loginFn = ()=>{
     </Teleport>
 
     <div class="hr"></div>
+    <div>
+      <div>axios loading状态：{{loading}}</div>
+      <div v-for="item in listData.list" :key="item.target_id">
+        <span>id：{{item.target_id}}</span>
+      </div>
+
+      <button @click="getPiniaData">点击获取getter处理过的数据缓存</button>
+    </div>
   </div>
 </template>
 

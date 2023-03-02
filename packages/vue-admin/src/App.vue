@@ -57,8 +57,7 @@
 
 <template>
     <header>
-        <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125"/>
-
+<!--        <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125"/>-->
         <div class="wrapper">
             <HelloWorld
                 ref="hello"
@@ -66,9 +65,8 @@
                 @clickChild="clickEven"
             />
           <div style="margin-left: 10px;">
-            npm组件引入demo
+            远程npm组件引入测试demo：
             <SkyButton></SkyButton>
-            <div>------</div>
             <SkyInput></SkyInput>
           </div>
             <nav>
@@ -130,9 +128,9 @@ body{
 
     @media (min-width: 1024px) {
         header {
-            display: flex;
-            place-items: center;
-            padding-right: calc(var(--section-gap) / 2);
+            /*display: flex;*/
+            /*place-items: center;*/
+            /*padding-right: calc(var(--section-gap) / 2);*/
         }
 
         .logo {

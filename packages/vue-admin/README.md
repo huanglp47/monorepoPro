@@ -77,6 +77,8 @@ getters使用；
 actions使用；
 注意pinia内不能写出action
 
+7.添加axios请求案例
+
 ```
 
 ## 集成功能
