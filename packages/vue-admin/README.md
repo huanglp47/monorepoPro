@@ -1,5 +1,20 @@
 
+
+### 2023-04-17
+添加mock支持
+```js
+// vite.config.js
+config.VITE_USE_MOCK === 'true' && plugins.push(
+        viteMockServe({
+            supportTs: true,
+            logger: false,
+            mockPath: "./mock/" // 注意文件位置
+        })
+    )
+```
+
 ```text
+
 // demo集合
 HelloWorld.vue
 

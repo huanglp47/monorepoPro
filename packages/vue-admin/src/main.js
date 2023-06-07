@@ -10,7 +10,6 @@ import './assets/less/index.less'
 
 // 引入axios
 // import  Axios from '@pense/api';
-
 const app = createApp(App)
 app.use(createPinia())
 app.use(router)

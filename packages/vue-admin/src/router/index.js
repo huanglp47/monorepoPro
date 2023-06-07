@@ -21,6 +21,11 @@ const router = createRouter({
             path: '/vscroll',
             name: 'vscroll',
             component: () => import('../views/VScroll.vue')
+        },
+        {
+            path: '/puppeteer',
+            name: 'puppeteer',
+            component: () => import('../views/Puppeteer.vue')
         }
     ]
 })

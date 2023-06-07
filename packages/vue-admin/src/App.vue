@@ -18,15 +18,20 @@
     // getUser().then(res => {
     //     console.log('%c123', 'color:red;')
     // })
+
+    // 格式化时间
     const time = format(new Date())
     console.log(time)
 
+    // 测试：删除参数两端空白
     const str = trimSpace('  76878,   bnbn  ')
     console.log('%cstr的值：'+str, 'color:red;')
 
-    const str2 = firstToUpperCase('sdsdfdf')
+    // 测试：首字母大写
+    const str2 = firstToUpperCase('sdsdfdf,dfdf,sdff')
     console.log(str2)
 
+    // 数组扁平化
     const arr = [11,[22,33],55,[66,[77,88]]]
     const newArr = flatArr(arr)
     console.log(arr)
@@ -53,12 +58,19 @@
     const clickEven = (val)=>{
       console.log(val)
     }
+
+    // 按钮点击
+    const getInfo = (val)=>{
+      console.log(111111)
+    }
+
 </script>
 
 <template>
     <header>
 <!--        <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125"/>-->
         <div class="wrapper">
+<!--            demo示例-->
             <HelloWorld
                 ref="hello"
                 msg="组件props"
@@ -66,13 +78,25 @@
             />
           <div style="margin-left: 10px;">
             远程npm组件引入测试demo：
-            <SkyButton></SkyButton>
+<!--            <sky-button type="primary">测试1111</sky-button>-->
+<!--            <sky-button>测试2222</sky-button>-->
+
+            <sky-button plain @click="getInfo">按钮</sky-button>
+            <sky-button disabled>按钮</sky-button>
+            <sky-button plain type="primary">primary按钮</sky-button>
+            <sky-button plain type="success">success按钮</sky-button>
+            <sky-button plain type="info">info按钮</sky-button>
+            <sky-button plain type="danger">danger按钮</sky-button>
+            <sky-button plain type="warning">warning按钮</sky-button>
+
+
             <SkyInput></SkyInput>
           </div>
             <nav>
                 <RouterLink to="/">Home</RouterLink>
                 <RouterLink to="/about">About</RouterLink>
                 <RouterLink to="/vscroll">虚拟滚动demo</RouterLink>
+              <RouterLink to="/puppeteer">测试使用puppeteer.js</RouterLink>
             </nav>
         </div>
     </header>
@@ -81,6 +105,7 @@
 </template>
 
 <style>
+[v-cloak] { background: gray; }s
 body{
   --test-var: 'green';
 }

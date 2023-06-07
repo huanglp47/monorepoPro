@@ -4,20 +4,28 @@
       <div class="modal-wrapper">
         <div class="modal-container">
           <div class="modal-header">
-            <slot name="header">default header</slot>
+            <slot name="header">
+              <span class="one-dialog_title">
+                {{ title }}
+              </span>
+            </slot>
+<!--            <button class="one-dialog_headerbtn">-->
+<!--              <i class="one-icon-close"></i>-->
+<!--            </button>-->
           </div>
 
           <div class="modal-body">
-            <slot name="body">default body</slot>
+            <slot name="body">
+              default body
+            </slot>
           </div>
 
           <div class="modal-footer">
             <slot name="footer">
-              default footer
-              <button
-                  class="modal-default-button"
-                  @click="$emit('close')"
-              >OK</button>
+              <div class="flex-box flex-center">
+                <span style="margin-right: 10px;">default footer</span>
+                <sky-button type="primary" @click="$emit('close')">确认</sky-button>
+              </div>
             </slot>
           </div>
         </div>
@@ -27,12 +35,20 @@
 </template>
 
 <script setup>
-const props= defineProps({
-  show: Boolean,
+import {SkyButton} from '@pense/components'
+const props = defineProps({
+  show: {
+    type: Boolean,
+    default: false
+  },
+  title: {
+    type: String,
+    default: '提示'
+  },
 })
 </script>
 
-<style>
+<style lang="less">
 .modal-mask {
   position: fixed;
   z-index: 9998;
@@ -63,6 +79,25 @@ const props= defineProps({
 .modal-header h3 {
   margin-top: 0;
   color: #42b983;
+}
+.one-dialog_title{
+  line-height: 24px;
+  font-size: 18px;
+  color: #303133;
+}
+.one-dialog_headerbtn{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+  .one-icon-close{
+    color:#909399
+  }
 }
 
 .modal-body {

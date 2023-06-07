@@ -33,3 +33,10 @@ a,
     padding: 0 2rem;
   }
 }
+.flex-box{
+    display: flex;
+}
+.flex-center{
+    align-items: center;
+    justify-content: flex-end;
+}

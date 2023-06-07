@@ -7,7 +7,7 @@ export function format(time, f = 'YYYY-MM-DD') {
 
 //除去input框 前后 空格
 export const trimSpace = function (s = "") {
-    return String(s).replace(/(^\s*)|(\s*$)/g, "")
+    return String(s).replace(/(^\s*)|(\s*$)/g, " ")
 }
 
 /**
@@ -41,13 +41,19 @@ function deleteEmptyAttri(obj) {
 }
 
 // 首字母转大写
-export const firstToUpperCase = (val) => {
-    return val.slice(0,1).toUpperCase() + val.slice(1)
+export const firstToUpperCase = (val, separator = ',') => {
+    // return val.slice(0,1).toUpperCase() + val.slice(1)
+    var newStr = val.split(separator)
+    for (var i = 0, len = newStr.length; i < len; i++) {
+        newStr[i] = newStr[i].slice(0, 1).toUpperCase() + newStr[i].slice(1).toLowerCase()
+    }
+    return newStr.join(separator)
 }
 
+
 // 多维数组拍平
-export const flatArr = (arr)=>{
-    return arr.reduce((prev,cur)=>{
+export const flatArr = (arr) => {
+    return arr.reduce((prev, cur) => {
         return prev.concat(Array.isArray(cur) ? flatArr(cur) : cur)
-    },[])
+    }, [])
 }
