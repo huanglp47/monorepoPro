@@ -1,41 +1,33 @@
 <template>
-<!--  <VirtualList :listData="data" :estimatedItemSize="100" v-slot="slotProps">-->
-  <VirtualList :listData="data" :estimatedItemSize="100">
-    <template #default="{ item }">
-      <p>
-        <span style="color:red">{{item.id}}</span>
-        {{item.value}}
-      </p>
-    </template>
-  </VirtualList>
+  <div>
+    <VirtualScroll :items="longList" :itemHeight="50" :containerHeight="400" />
+  </div>
 </template>
 
-<script setup>
-import { faker } from '@faker-js/faker';
+<script>
+import { ref, onMounted } from 'vue';
+import VirtualScroll from './../components/VirtualScroll.vue';
 
-import VirtualList from '../components/VirtualList.vue'
+export default {
+  components: {
+    VirtualScroll
+  },
+  setup() {
+    const longList = ref([]);
 
-const LIST_LENGTH = 1000
-// const songs = new Array(LIST_LENGTH).fill(0).map((_, idx) => ({idx: idx + 1}))
+    onMounted(() => {
+      // 模拟异步获取长列表数据
+      setTimeout(() => {
+        longList.value = Array.from({ length: 1000 }, (v, i) => ({
+          id: i,
+          text: `Item ${i}`
+        }));
+      }, 1000);
+    });
 
-let data = [];
-for (let id = 0; id < LIST_LENGTH; id++) {
-  data.push({
-    id,
-    value: faker.lorem.sentences() // 长文本
-  });
-}
+    return {
+      longList
+    };
+  }
+};
 </script>
-
-<style>
-html {
-  height: 100%;
-}
-body {
-  height: 100%;
-  margin: 0;
-}
-#app {
-  height: 100%;
-}
-</style>

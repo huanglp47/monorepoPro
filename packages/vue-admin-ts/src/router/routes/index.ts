@@ -29,6 +29,16 @@ export const LoginRoute:AppRouteRecordRaw = {
         title: '登录',
     }
 }
+export const TestRoute:AppRouteRecordRaw = {
+    path: '/test',
+    name: 'Test',
+    component: () => import('@/views/sys/test/index.vue'),
+    meta: {
+        title: '练习页面demo',
+    }
+}
+
+
 // 404 on a page
 export const PAGE_NOT_FOUND_ROUTE: AppRouteRecordRaw = {
     path: '/:path(.*)*',
@@ -62,6 +72,7 @@ Object.keys(modules).forEach((key)=>{
 
 export const basicRoutes = [
     LoginRoute,
+    TestRoute,
     HomeRoute,
     AboutRoute,
     ...routeModuleList, // 主要路由

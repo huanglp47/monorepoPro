@@ -1,102 +1,60 @@
-// @ts-nocheck
-import axios from 'axios'
-import qs from 'qs'
+import axios from 'axios';
+import type { AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
 
-const baseUrl = ''
+class AxiosService {
+    private axiosInstance: AxiosInstance;
 
-// axios 配置
-const instance = axios.create({
-    headers:{
-        'Content-Type': 'application/json',
-    },
-    timeout: 30000,
-    baseURL: baseUrl,   //接口请求地址
-})
+    constructor(baseURL: string) {
+        this.axiosInstance = axios.create({
+            baseURL,
+            timeout: 30000,
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
 
-// 添加请求拦截器
-instance.interceptors.request.use(config => {
-    // 在发送请求之前做些什么，比如传token
-    return config
-}, error => {
-    // 对请求错误做些什么
-    console.log(error) // for debug
-    return Promise.reject(error);
-})
+        this.setupInterceptors();
+    }
 
-// 添加响应拦截器
-instance.interceptors.response.use(response => {
-    // 对响应数据做点什么
-    const res = response.data;
-    //对错误代码做处理
-    return response;
-}, error => {
-    // 对响应错误做点什么
-    console.log('err' + error)// for debug
-    return Promise.reject(error);
-});
+    private setupInterceptors() {
+        this.axiosInstance.interceptors.request.use(
+            (config: AxiosRequestConfig) => {
+                // 请求拦截逻辑
+                return config;
+            },
+            (error: AxiosError) => {
+                // 请求拦截错误处理
+                return Promise.reject(error);
+            }
+        );
 
-export default instance;
+        this.axiosInstance.interceptors.response.use(
+            (response: AxiosResponse) => {
+                // 响应拦截逻辑
+                return response.data;
+            },
+            (error: AxiosError) => {
+                // 响应拦截错误处理
+                return Promise.reject(error);
+            }
+        );
+    }
 
-/**
- * post 请求方法
- * @param url
- * @param data
- * @returns {Promise}
- */
-export function httpPost(url, data = {}) {
-    return new Promise((resolve, reject) => {
-        instance.post(url, data).then(response => {
-            //对接口错误码做处理
-            resolve(response.data);
-        }, err => {
-            reject(err);
-        })
-    })
+    public get<T>(url: string, params?: any): Promise<T> {
+        return this.axiosInstance.get<T>(url, { params })
+    }
+
+    public post<T>(url: string, data?: any): Promise<T> {
+        return this.axiosInstance.post<T>(url, data)
+    }
+
+
+    // 添加其他 HTTP 方法的封装，如 put、delete 等
+
+    // 可以根据需要自定义其他方法
+    public setHeader(name: string, value: string): void {
+        this.axiosInstance.defaults.headers.common[name] = value;
+    }
 }
 
-/**
- * get 请求方法
- * @param url
- * @param data
- * @returns {Promise}
- */
-export function httpGet(url, data = {}) {
-    return new Promise((resolve, reject) => {
-        instance.get(url, {
-            params: data
-        })
-            .then(response => {
-                resolve(response);
-            })
-            .catch(err => {
-                reject(err)
-            })
-    })
-}
-
-/**
- * 封装所有请求
- * @param methed
- * @param url
- * @param data
- * @param headers
- * @returns {Promise}
- */
-export function request(methed,url, data = {},headers={}) {
-    return new Promise((resolve, reject) => {
-        instance({
-            method: methed || 'post',
-            url:url,
-            params: methed === 'get' ? data :'',
-            data: methed !== 'get' ?  data :'',
-            headers: headers || {'Content-Type':'application/json'},
-        })
-            .then(response => {
-                //对接口错误码做处理
-                resolve(response.data);
-            })
-            .catch(err => {
-                reject(err)
-            })
-    })
-}
+export default AxiosService;
