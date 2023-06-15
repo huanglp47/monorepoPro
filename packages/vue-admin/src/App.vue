@@ -7,6 +7,7 @@
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/vscroll">虚拟滚动demo</RouterLink>
+        <RouterLink to="/vscrollNew">虚拟滚动2demo</RouterLink>
         <RouterLink to="/puppeteer">测试使用puppeteer.js</RouterLink>
       </div>
     </nav>
