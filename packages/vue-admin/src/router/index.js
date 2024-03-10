@@ -31,6 +31,14 @@ const router = createRouter({
             path: '/puppeteer',
             name: 'puppeteer',
             component: () => import('../views/Puppeteer.vue')
+        }, {
+            path: '/demo1',
+            name: 'demo1',
+            component: () => import('../views/demo1.vue')
+        }, {
+            path: '/demo2',
+            name: 'demo2',
+            component: () => import('../views/demo2.vue')
         }
     ]
 })

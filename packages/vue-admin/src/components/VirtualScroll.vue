@@ -1,11 +1,11 @@
 <template>
   <div class="list-container" ref="container" @scroll="handleScroll">
     <div class="list-placeholder" :style="{ height: placeholderHeight + 'px' }"></div>
-    <div class="list-viewport" :style="{ height: containerHeight + 'px' }">
-      <div :style="{ transform: 'translateY(' + scrollOffset + 'px)' }">
+    <div class="list-viewport" :style="{ height: containerHeight + 'px', transform: 'translateY(' + scrollOffset + 'px)'}">
+<!--      <div :style="{ transform: 'translateY(' + scrollOffset + 'px)' }">-->
         <div v-for="item in visibleItems" :key="item.id" class="list-item">
           {{ item.text }}
-        </div>
+<!--        </div>-->
       </div>
     </div>
     <div class="list-placeholder" :style="{ height: placeholderHeight + 'px' }"></div>

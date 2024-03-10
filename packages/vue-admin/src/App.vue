@@ -9,6 +9,8 @@
         <RouterLink to="/vscroll">虚拟滚动demo</RouterLink>
         <RouterLink to="/vscrollNew">虚拟滚动2demo</RouterLink>
         <RouterLink to="/puppeteer">测试使用puppeteer.js</RouterLink>
+        <RouterLink to="/demo1">demo1</RouterLink>
+        <RouterLink to="/demo2">模糊搜索</RouterLink>
       </div>
     </nav>
   </header>

@@ -60,6 +60,10 @@ watchEffect(() => {
 const closeFn = () => {
   showModal.value = false
 }
+const openFn = () => {
+  showModal.value = true
+}
+
 
 const patchStore = () => {
   store.$patch({
@@ -201,7 +205,7 @@ function change(){
 
     <div class="hr"></div>
     <p>点击弹出全局弹框组件</p>
-    <button id="show-modal" @click="showModal = true">全屏的模态框</button>
+    <button id="show-modal" @click="openFn">全屏的模态框</button>
     <Teleport to="body">
        <MyModal :show="showModal" @close="closeFn">
         <template #header>
@@ -219,6 +223,10 @@ function change(){
 
       <button @click="getPiniaData">点击获取getter处理过的数据缓存</button>
     </div>
+
+
+    <div class="hr"></div>
+    <div class="">演示：vue中‘style’区域如何调用js定义的变量</div>
   </div>
 </template>
 
