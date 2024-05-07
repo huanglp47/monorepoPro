@@ -1,12 +1,14 @@
 <script setup>
 // import axios from 'axios' // 测试mock,可以删除
 import {useMainStore} from "../stores/main";
-import {defineEmits, onMounted, reactive, ref,customRef, watch, watchEffect, toRef} from 'vue'
+import {defineEmits, onMounted, reactive, ref,customRef, watch, watchEffect, toRef, inject} from 'vue'
 import {useRouter} from 'vue-router'
 import MyModal from '../components/MyModal.vue'
 // 模态框显示与隐藏
 const showModal = ref(false)
 const $router = useRouter()
+const themeColor = inject('themeColor', 'default'); // 第二个参数是默认值，如果provide中没有提供则使用默认值
+
 
 const store = useMainStore()
 
@@ -159,9 +161,16 @@ function change(){
 
 <template>
   <div>
+    <p>测试provide/inject传递：</p>
+    <p>当前主题是:{{themeColor}}</p>
+  </div>
+  <div class="hr"></div>
+
+  <div>
     newObj: {{newObj}}
   </div>
   <button @click="change">修改newObj</button>
+  <div class="hr"></div>
 
   <div class="greetings">
     <div class="hr"></div>

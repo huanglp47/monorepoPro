@@ -12,7 +12,13 @@ import {
   SkyInput,
 } from '@pense/components'
 
-import {onMounted, ref} from 'vue'
+import {
+  onMounted,
+  provide,
+  ref} from 'vue'
+
+const themeColor = ref('blue');
+provide('themeColor', themeColor);
 
 // 测试
 // getUser().then(res => {
