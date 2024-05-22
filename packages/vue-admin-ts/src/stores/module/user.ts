@@ -47,7 +47,6 @@ export const useUserStore = defineStore({
         },
 
         async getHitsApi(params: object): Promise<GetUserInfoModel | null> {
-        
             try {
                 if(this.hits?.length>0){
                     return this.getHits();

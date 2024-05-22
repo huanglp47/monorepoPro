@@ -1,5 +1,5 @@
 <script setup>
-import HelloWorld from './../components/HelloWorld.vue'
+import HelloWorld from './../../components/HelloWorld.vue'
 import {
   format,
   trimSpace,
@@ -74,19 +74,11 @@ const getInfo = (val) => {
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125"/>
-    <div class="wrapper">
-      <!--            demo示例-->
-      <HelloWorld
-          ref="hello"
-          msg="组件props"
-          @clickChild="clickEven"
-      />
-      <div style="margin-left: 10px;">
-        以下是远程npm组件引入测试demo：
+    <div class="m-box">
+      <p>以下是远程npm组件引入测试demo：</p>
+      <div class="m-box">
         <!--            <sky-button type="primary">测试1111</sky-button>-->
         <!--            <sky-button>测试2222</sky-button>-->
-
         <sky-button plain @click="getInfo">按钮</sky-button>
         <sky-button disabled>按钮</sky-button>
         <sky-button plain type="primary">primary按钮</sky-button>
@@ -94,9 +86,19 @@ const getInfo = (val) => {
         <sky-button plain type="info">info按钮</sky-button>
         <sky-button plain type="danger">danger按钮</sky-button>
         <sky-button plain type="warning">warning按钮</sky-button>
-
+      </div>
+      <div class="m-box">
         <SkyInput></SkyInput>
       </div>
+    </div>
+
+    <div class="wrapper m-box" style="margin-top: 50px;">
+      <p>以下是组件HelloWorld的demo示例</p>
+      <HelloWorld
+          ref="hello"
+          msg="组件props"
+          @clickChild="clickEven"
+      />
     </div>
   </header>
 

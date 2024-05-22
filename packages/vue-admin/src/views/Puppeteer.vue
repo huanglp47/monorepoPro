@@ -13,17 +13,14 @@ const change3D = v => document.querySelector('html').classList[v.target.checked 
 <template>
   <div>
     <br />
-
     <label for="loading">点击切换</label>
     <input v-model="loading" id="loading" type="checkbox" />
 
     <br /><br />
-
     <label for="threeView">3d视图</label>
     <input @input="change3D" id="threeView" type="checkbox" />
 
     <br /><br />
-
     <div class="card col" v-skeleton="loading">
       <img  class="cover" :src="url" v-skeleton-item />
       <div class="details row">

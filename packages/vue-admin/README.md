@@ -1,5 +1,54 @@
 
 
+### 2024-05-22
+路由-页面模块改造   
+
+改造前：所有路由位于router-index
+
+```js
+import {createRouter, createWebHistory} from 'vue-router'
+
+const router = createRouter({
+    history: createWebHistory(import.meta.env.BASE_URL),
+    routes: [
+        {
+            path: '/',
+            name: 'home',
+            component: () => import('../views/AppView.vue')
+        },
+       {
+            path: '/demo1',
+            name: 'demo1',
+            component: () => import('../views/demo1.vue')
+       }
+       //...
+    ]
+})
+
+export default router
+
+```
+
+改造后：
+![img_1.png](img_1.png)
+```text
+动态导入路由文件
+const files = require.context('./routes/', true, /\.js$/);  
+const routes = files.keys().map(key => {  
+  // 去除 './' 和文件扩展名  
+  const routePath = key.replace(/(\.\/|\.js)/g, '');  
+  // 使用require动态导入路由模块  
+  return files(key).default;  
+});  
+  
+const router = new VueRouter({  
+  routes  
+});  
+  
+export default router;
+
+```
+
 ### 2023-04-17
 添加mock支持
 ```js

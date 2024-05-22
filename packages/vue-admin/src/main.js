@@ -6,7 +6,6 @@ import router from './router'
 
 import './assets/main.css'
 
-
 // 引入axios
 // import  Axios from '@pense/api';
 const app = createApp(App)

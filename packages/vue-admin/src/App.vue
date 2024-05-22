@@ -6,11 +6,10 @@
       <div>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
-        <RouterLink to="/vscroll">虚拟滚动demo</RouterLink>
-        <RouterLink to="/vscrollNew">虚拟滚动2demo</RouterLink>
-        <RouterLink to="/puppeteer">测试使用puppeteer.js</RouterLink>
-        <RouterLink to="/demo1">demo1</RouterLink>
-        <RouterLink to="/demo2">模糊搜索</RouterLink>
+        <RouterLink to="/vscroll">虚拟滚动</RouterLink>
+        <RouterLink to="/demo">demo集合</RouterLink>
+        <RouterLink to="/puppeteer">测试puppeteer.js</RouterLink>
+        <RouterLink to="/vscrollNew">虚拟滚动2</RouterLink>
       </div>
     </nav>
   </header>

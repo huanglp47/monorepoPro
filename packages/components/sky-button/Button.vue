@@ -1,14 +1,12 @@
 <template>
-  <div>
-    <button class="sky-button"
-            :disabled='disabled'
-            :class="[`sky-button-${type}`, {
+  <button class="sky-button"
+          :disabled='disabled'
+          :class="[`sky-button-${type}`, {
               'is-plain':plain,
               'is-disabled':disabled
             }]">
-      <span><slot></slot></span>
-    </button>
-  </div>
+    <span><slot></slot></span>
+  </button>
 </template>
 
 <script setup>
@@ -27,9 +25,6 @@ const props = defineProps({
   },
 
 })
-
-console.log(props.type)
-
 </script>
 
 <style scoped lang="less">
@@ -45,7 +40,7 @@ console.log(props.type)
   text-align: center;
   box-sizing: border-box; /*内边距和边框放入宽高内*/
   outline: none; /*去除按钮自带边框*/
-  margin: 0;
+  margin: 5px 5px 0 0;
   transition: 0.1s;
   font-weight: 500;
   /*禁止元素的文字被选中*/
@@ -123,7 +118,8 @@ console.log(props.type)
     color: #fff;
   }
 }
-.sky-button.is-disabled{
+
+.sky-button.is-disabled {
   cursor: no-drop;
 }
 

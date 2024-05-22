@@ -47,6 +47,7 @@ export const useMainStore = defineStore('main', {
             } catch (err) {
             }
         },
+
         setHits(data) {
             this.hits = data;
         },

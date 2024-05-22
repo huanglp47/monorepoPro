@@ -72,3 +72,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.m-box{
+    border: 1px  solid #1e90ff;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+}

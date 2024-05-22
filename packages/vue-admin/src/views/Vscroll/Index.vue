@@ -6,7 +6,7 @@
 
 <script>
 import { ref, onMounted } from 'vue';
-import VirtualScroll from './../components/VirtualScroll.vue';
+import VirtualScroll from './../../components/VirtualScroll.vue';
 
 export default {
   components: {
@@ -22,7 +22,7 @@ export default {
           id: i,
           text: `Item ${i}`
         }));
-      }, 1000);
+      }, 100);
     });
 
     return {

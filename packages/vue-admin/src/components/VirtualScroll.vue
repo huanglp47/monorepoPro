@@ -34,12 +34,17 @@ const props = defineProps({
 const container = ref(null); // 列表容器的 DOM 引用
 const scrollOffset = ref(0); // 滚动偏移量
 const visibleItems = ref([]); // 可见列表项
-const placeholderHeight = computed(() => props.items.length * props.itemHeight - props.containerHeight); // 占位高度
+// const placeholderHeight = computed(() => props.items.length * props.itemHeight - props.containerHeight); // 占位高度
+const placeholderHeight = computed(() => {
+
+  return visibleItems.value.length>0 ? props.items.length * props.itemHeight - props.containerHeight: 0
+}); // 占位高度
 
 // 根据滚动位置计算可见列表项
 const calculateVisibleItems = () => {
   const startIndex = Math.floor(scrollOffset.value / props.itemHeight);
   const endIndex = Math.ceil((scrollOffset.value + props.containerHeight) / props.itemHeight);
+
   visibleItems.value = props.items.slice(startIndex, endIndex);
 };
 
